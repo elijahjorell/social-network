@@ -1,11 +1,11 @@
 import './App.css';
 import {Route, BrowserRouter as Router, Switch} from "react-router-dom";
-import Login from "./pages/login";
-import Home from "./pages/home";
-import Profile from "./pages/profile";
-import Project from "./pages/project";
-import NotFound from "./pages/not-found";
-import Landing from "./pages/landing";
+import Login from "./pages/Login";
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import Project from "./pages/Project";
+import NotFound from "./pages/NotFound";
+import Landing from "./pages/Landing";
 
 function App() {
   return (
