@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Profile = () => {
+const Profile = ({ match }) => {
   return (
     <div className="Profile">
-      Profile
+      {match.params.username}'s Profile
     </div>
   );
 };
