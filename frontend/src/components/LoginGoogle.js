@@ -1,15 +1,16 @@
 import React from 'react';
 import GoogleLogin from "react-google-login";
 import {useHistory} from "react-router-dom";
+import {useCookies} from "react-cookie";
 
 const LoginGoogle = () => {
   const history = useHistory();
+  const [, setCookies] = useCookies(['auth-token'])
 
-  const responseGoogle = response => {
-    console.log(response);
+  const responseGoogle = (response) => {
+    setCookies('auth-token', response.tokenObj);
     history.push("/home");
   };
-
 
   return (
     <div className="LoginGoogle">
