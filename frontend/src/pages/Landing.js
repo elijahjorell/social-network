@@ -1,11 +1,12 @@
 import React from 'react';
+import LoginGoogle from "../components/LoginGoogle";
+import SignupGoogle from "../components/SignupGoogle";
 
 const Landing = () => {
   return (
     <div className="Landing">
-      Landing
-      <br/>
-      {process.env.REACT_APP_SECRET}
+      <SignupGoogle />
+      <LoginGoogle />
     </div>
   );
 };
