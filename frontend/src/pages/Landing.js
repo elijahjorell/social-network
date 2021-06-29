@@ -4,6 +4,8 @@ const Landing = () => {
   return (
     <div className="Landing">
       Landing
+      <br/>
+      {process.env.REACT_APP_SECRET}
     </div>
   );
 };
