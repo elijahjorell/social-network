@@ -1,10 +1,10 @@
 import React from 'react';
-import ProtectedRoute from "../components/ProtectedRoute";
+import Feed from "../components/Feed";
 
 const Home = () => {
   return (
     <div className="Home">
-      Home
+      <Feed />
     </div>
   );
 };

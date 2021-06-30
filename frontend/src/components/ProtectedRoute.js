@@ -13,7 +13,7 @@ const ProtectedRoute = ({ component: Component, location, ...rest}) => {
         (props) => {
           if (cookies['auth-token'] !== undefined &&
               cookies['auth-token'].id_token !== undefined &&
-              axios.get(validateBaseUrl + cookies['auth-token'].id_token).then(() => {console.log("lol")})) {
+              axios.get(validateBaseUrl + cookies['auth-token'].id_token)) {
             return <Component {...props} key={location.key}/>
           } else {
             return <Redirect to={

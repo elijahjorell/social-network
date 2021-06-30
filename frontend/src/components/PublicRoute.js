@@ -1,26 +1,32 @@
 import React from 'react';
 import {useCookies} from "react-cookie";
 import axios from "axios";
-import {useHistory} from "react-router-dom";
+import {Redirect, Route} from "react-router-dom";
 
-const PublicRoute = ({ component: Component, location, ...rest}) => {
-  const history = useHistory();
+const PublicRoute = ({ component: Component, to, location, ...rest}) => {
   const [cookies] = useCookies(['auth-token']);
-
-  if (cookies['auth-token'] !== undefined) {
-    if (cookies['auth-token'].id_token !== undefined) {
-      const validateUrl = `https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${cookies['auth-token'].id_token}`;
-      axios.get(validateUrl).then((res) => {
-        if (res.status === 200) {
-          history.push("/home");
-        }
-      });
-    }
-  }
+  const validateBaseUrl = "https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=";
 
   return (
-    <div className="PublicRoute">
-      Public Route
+    <div className="Public">
+      <Route {...rest} render={
+        (props) => {
+          if (cookies['auth-token'] !== undefined &&
+            cookies['auth-token'].id_token !== undefined &&
+            axios.get(validateBaseUrl + cookies['auth-token'].id_token)) {
+            return <Redirect to={
+              {
+                pathname: to,
+                state: {
+                  from: props.location
+                }
+              }
+            }/>
+          } else {
+            return <Component {...props} key={location.key}/>
+          }
+        }
+      } />
     </div>
   );
 };
