@@ -6,8 +6,6 @@ import LogoutNavLink from "./LogoutNavLink";
 const CustomNavbar = () => {
   const authenticatedUserUsername = "elijahjorell";
 
-
-
   return (
     <div className="CustomNavbar">
       <Navbar bg="dark" variant="dark">

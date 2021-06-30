@@ -6,6 +6,7 @@ import Project from "./pages/Project";
 import NotFound from "./pages/NotFound";
 import Landing from "./pages/Landing";
 import CustomNavbar from "./components/CustomNavbar";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = withRouter(({ location }) => {
   return (
@@ -13,9 +14,9 @@ const App = withRouter(({ location }) => {
       {location.pathname !== "/" && <CustomNavbar />}
       <Switch>
         <Route exact path="/" component={Landing} />
-        <Route exact path="/home" component={Home} />
-        <Route exact path="/project/:projectname" component={Project} />
-        <Route exact path="/:username" component={Profile} />
+        <ProtectedRoute exact path="/home" component={Home} />
+        <ProtectedRoute exact path="/project/:projectname" component={Project} />
+        <ProtectedRoute exact path="/:username" component={Profile} />
         <Route component={NotFound} />
       </Switch>
     </div>
